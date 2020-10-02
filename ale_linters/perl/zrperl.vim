@@ -55,8 +55,6 @@ function! ale_linters#perl#zrperl#Handle(buffer, lines) abort
     return l:output
 endfunction
 
-echo "HERE"
-
 call ale#linter#Define('zrperl', {
 \   'name': 'zrperl',
 \   'executable': {b -> ale#Var(b, 'perl_zrperl_executable')},
