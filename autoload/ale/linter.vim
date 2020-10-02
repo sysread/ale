@@ -43,7 +43,7 @@ let s:default_ale_linters = {
 \   'go': ['gofmt', 'golint', 'go vet'],
 \   'hack': ['hack'],
 \   'help': [],
-\   'perl': ['perlcritic'],
+\   'perl': ['perlcritic', 'zrperl'],
 \   'perl6': [],
 \   'python': ['flake8', 'mypy', 'pylint', 'pyright'],
 \   'rust': ['cargo', 'rls'],
