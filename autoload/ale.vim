@@ -100,7 +100,6 @@ function! s:Lint(buffer, should_lint_file, timer_id) abort
     " Use the filetype from the buffer
     let l:filetype = getbufvar(a:buffer, '&filetype')
     let l:linters = ale#linter#Get(l:filetype)
-echo l:linters
     let l:linters = ale#linter#RemoveIgnored(a:buffer, l:filetype, l:linters)
 
     " Tell other sources that they can start checking the buffer now.
