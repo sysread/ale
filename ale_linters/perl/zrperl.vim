@@ -1,11 +1,11 @@
 " Author: jober
 " Description: support for perl syntax checking using your devxp workspace
 
-call ale#Set('perl_zr_executable', 'perl')
-call ale#Set('perl_zr_options', '-c -Mwarnings -Ilib')
+call ale#Set('perl_zrperl_executable', 'perl')
+call ale#Set('perl_zrperl_options', '-c -Mwarnings -Ilib')
 
-function! ale_linters#perl#zr#GetCommand(buffer) abort
-    return '%e' . ale#Pad(ale#Var(a:buffer, 'perl_zr_options')) . ' %t'
+function! ale_linters#perl#zrperl#GetCommand(buffer) abort
+    return '%e' . ale#Pad(ale#Var(a:buffer, 'perl_zrperl_options')) . ' %t'
 endfunction
 
 let s:begin_failed_skip_pattern = '\v' . join([
@@ -13,7 +13,7 @@ let s:begin_failed_skip_pattern = '\v' . join([
 \   '^Can''t locate',
 \], '|')
 
-function! ale_linters#perl#zr#Handle(buffer, lines) abort
+function! ale_linters#perl#zrperl#Handle(buffer, lines) abort
     if empty(a:lines)
         return []
     endif
@@ -55,10 +55,10 @@ function! ale_linters#perl#zr#Handle(buffer, lines) abort
     return l:output
 endfunction
 
-call ale#linter#Define('zr', {
+call ale#linter#Define('zrperl', {
 \   'name': 'zrperl',
-\   'executable': {b -> ale#Var(b, 'perl_zr_executable')},
+\   'executable': {b -> ale#Var(b, 'perl_zrperl_executable')},
 \   'output_stream': 'both',
-\   'command': function('ale_linters#perl#zr#GetCommand'),
-\   'callback': 'ale_linters#perl#zr#Handle',
+\   'command': function('ale_linters#perl#zrperl#GetCommand'),
+\   'callback': 'ale_linters#perl#zrperl#Handle',
 \})
